@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>書籍管理システム</title>
+
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<h1>書籍管理システム</h1>
+
+<div class="toolbar">
+    <form action="/" method="get" class="search-form">
+        <input type="text" name="q" value="<%= keyword || '' %>" placeholder="タイトル・著者・出版社で検索">
+        <select name="sort">
+            <option value="ID" <%= sortBy === 'ID' ? 'selected' : '' %>>ID順</option>
+            <option value="title" <%= sortBy === 'title' ? 'selected' : '' %>>タイトル順</option>
+            <option value="year" <%= sortBy === 'year' ? 'selected' : '' %>>出版年順</option>
+            <option value="pages" <%= sortBy === 'pages' ? 'selected' : '' %>>ページ数順</option>
+            <option value="purchaser" <%= sortBy === 'purchaser' ? 'selected' : '' %>>購入者順</option>
+        </select>
+        <button type="submit" class="btn btn-detail">検索</button>
+    </form>
+    <a href="/new" class="btn btn-create">新規追加</a>
+    <a href="/purchasers" class="btn btn-create">購入者一覧</a>
+    <a href="/genres" class="btn btn-create">ジャンル一覧</a>
+</div>
+
+<% if (books.length === 0) { %>
+<div class="empty-state">データなし</div>
+<% } else { %>
+<table>
+
+<tr>
+
+<th>書籍名</th>
+<th>出版年</th>
+<th>ページ</th>
+<th>購入者</th>
+<th>保管場所</th>
+<th>最新状態</th>
+<th>操作</th>
+
+</tr>
+
+<% books.forEach(book=>{ %>
+
+<tr>
+
+<td><%= book.title %></td>
+<td><%= book.publish_year %></td>
+<td><%= book.pages %></td>
+<td><%= book.purchaser_id %></td>
+<td><%= book.shelf %></td>
+<td><%= book.action %></td>
+
+<td>
+    <div class="action-buttons">
+        <a href="/detail/<%= book.book_id %>">
+            <button class="btn btn-detail">詳細</button>
+        </a>
+        <a href="/edit/<%= book.book_id %>">
+            <button class="btn btn-edit">編集</button>
+        </a>
+        <form action="/delete/<%= book.book_id %>" method="post" class="inline-form">
+            <button type="submit" class="btn btn-delete" onclick="return confirm('本当に削除しますか？');">削除</button>
+        </form>
+    </div>
+</td>
+
+</tr>
+
+<% }) %>
+
+</table>
+<% } %>
+
+<script src="/js/script.js"></script>
+
+</body>
+
+</html>

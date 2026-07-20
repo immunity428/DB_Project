@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>書籍新規追加</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="page">
+    <h1>書籍新規追加</h1>
+
+    <div class="detail-card">
+        <form action="/new" method="post">
+            <% if (errorMessage) { %>
+                <div class="form-error"><%= errorMessage %></div>
+            <% } %>
+            <div class="detail-grid">
+                <div>
+                    <strong>書籍名</strong>
+                    <input type="text" name="title" value="<%= formData.title %>" required>
+                </div>
+                <div>
+                    <strong>著者</strong>
+                    <input type="text" name="author_name" value="<%= formData.author_name %>" required>
+                </div>
+                <div>
+                    <strong>出版社</strong>
+                    <input type="text" name="publisher_name" value="<%= formData.publisher_name %>" required>
+                </div>
+                <div>
+                    <strong>出版年</strong>
+                    <input type="number" name="publish_year" value="<%= formData.publish_year %>">
+                </div>
+                <div>
+                    <strong>ページ数</strong>
+                    <input type="number" name="pages" value="<%= formData.pages %>">
+                </div>
+                <div>
+                    <strong>購入者ID</strong>
+                    <input type="text" name="purchaser_id" value="<%= formData.purchaser_id %>">
+                </div>
+                <div>
+                    <strong>ジャンル</strong>
+                    <input type="text" name="genres" value="<%= formData.genres %>" placeholder="例: 小説, 漫画">
+                </div>
+                <div>
+                    <strong>保管場所（部屋）</strong>
+                    <input type="text" name="location_room" value="<%= formData.location_room %>">
+                </div>
+                <div>
+                    <strong>保管場所（棚）</strong>
+                    <input type="text" name="location_shelf" value="<%= formData.location_shelf %>">
+                </div>
+                <div>
+                    <strong>状態変更年</strong>
+                    <input type="number" name="action_year" value="<%= formData.action_year %>" required>
+                </div>
+            </div>
+
+            <div class="back-area">
+                <button type="submit" class="back-button">登録する</button>
+                <a href="/" class="back-button">キャンセル</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

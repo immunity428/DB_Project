@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>書籍詳細</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="page">
+    <h1>書籍詳細</h1>
+
+    <% if (book) { %>
+    <div class="detail-card">
+        <div class="detail-header">
+            <h2><%= book.title %></h2>
+            <small class="book-id-tag">BOOK_ID: <%= book.book_id %></small>
+        </div>
+
+        <div class="detail-grid">
+            <div><strong>著者</strong><span><%= book.author_name %></span></div>
+            <div><strong>出版社</strong><span><%= book.publisher_name %></span></div>
+            <div><strong>出版年</strong><span><%= book.publish_year %></span></div>
+            <div><strong>ページ数</strong><span><%= book.pages %></span></div>
+            <div><strong>ジャンル</strong><span><%= book.genres || "-" %></span></div>
+            <div><strong>状態</strong><span><%= book.action || "-" %></span></div>
+            <div><strong>購入者</strong><span><%= book.purchaser_name || "-" %></span></div>
+            <div><strong>部署</strong><span><%= book.position || "-" %></span></div>
+            <div><strong>保管場所</strong><span><%= book.room || "-" %> <%= book.shelf || "" %></span></div>
+            <div><strong>状態変更年</strong><span><%= book.action_year || "-" %></span></div>
+        </div>
+    </div>
+    <% } %>
+
+    <div class="back-area">
+        <a href="/" class="back-button">一覧へ戻る</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>書籍編集</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="page">
+    <h1>書籍編集</h1>
+
+    <div class="detail-card">
+        <form action="/edit/<%= book.book_id %>" method="post">
+            <div class="detail-grid">
+                <div>
+                    <strong>書籍名</strong>
+                    <input type="text" name="title" value="<%= book.title %>" required>
+                </div>
+                <div>
+                    <strong>出版年</strong>
+                    <input type="number" name="publish_year" value="<%= book.publish_year %>">
+                </div>
+                <div>
+                    <strong>ページ数</strong>
+                    <input type="number" name="pages" value="<%= book.pages %>">
+                </div>
+                <div>
+                    <strong>購入者</strong>
+                    <input type="text" name="purchaser_id" value="<%= book.purchaser_id %>">
+                </div>
+                <div>
+                    <strong>状態</strong>
+                    <select name="action">
+                        <option value="新規追加" <%= book.action === '新規追加' ? 'selected' : '' %>>新規追加</option>
+                        <option value="破棄" <%= book.action === '破棄' ? 'selected' : '' %>>破棄</option>
+                        <option value="貸出" <%= book.action === '貸出' ? 'selected' : '' %>>貸出</option>
+                        <option value="返却" <%= book.action === '返却' ? 'selected' : '' %>>返却</option>
+                        <option value="行方不明" <%= book.action === '行方不明' ? 'selected' : '' %>>行方不明</option>
+                    </select>
+                </div>
+                <div>
+                    <strong>ジャンル</strong>
+                    <input type="text" name="genres" value="<%= book.genres || '' %>" placeholder="例: 小説, 児童書">
+                </div>
+            </div>
+
+            <div class="back-area">
+                <button type="submit" class="back-button">更新する</button>
+                <a href="/" class="back-button">キャンセル</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

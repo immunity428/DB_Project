@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ジャンル一覧</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="page">
+    <h1>ジャンル一覧</h1>
+
+    <table>
+        <tr>
+            <th>ジャンル</th>
+            <th>操作</th>
+        </tr>
+
+        <% genres.forEach(genre=>{ %>
+        <tr>
+            <td><%= genre.genre_name || '-' %></td>
+            <td>
+                <a href="/genres/<%= genre.genre_id %>" class="btn btn-detail">詳細</a>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+
+    <div class="back-area">
+        <a href="/" class="back-button">一覧へ戻る</a>
+    </div>
+</div>
+</body>
+</html>

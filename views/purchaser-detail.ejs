@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>購入者詳細</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="page">
+    <h1>購入者詳細</h1>
+
+    <div class="detail-card">
+        <p><strong>購入者ID:</strong> <%= purchaser.purchaser_id %></p>
+        <p><strong>名前:</strong> <%= purchaser.purchaser_name %></p>
+        <p><strong>部署:</strong> <%= purchaser.position %></p>
+    </div>
+
+    <h2>関連書籍</h2>
+    <table>
+        <tr>
+            <th>書籍名</th>
+            <th>出版年</th>
+            <th>状態</th>
+            <th>ジャンル</th>
+        </tr>
+        <% books.forEach(book=>{ %>
+        <tr>
+            <td><%= book.title || '-' %></td>
+            <td><%= book.publish_year || '-' %></td>
+            <td><%= book.action || '-' %></td>
+            <td><%= book.genres || '-' %></td>
+        </tr>
+        <% }) %>
+    </table>
+
+    <div class="back-area">
+        <a href="/purchasers" class="back-button">購入者一覧へ戻る</a>
+    </div>
+</div>
+</body>
+</html>

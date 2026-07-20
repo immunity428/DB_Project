@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>購入者一覧</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="page">
+    <h1>購入者一覧</h1>
+
+    <table>
+        <tr>
+            <th>購入者ID</th>
+            <th>名前</th>
+            <th>部署</th>
+            <th>操作</th>
+        </tr>
+
+        <% purchasers.forEach(purchaser=>{ %>
+        <tr>
+            <td><%= purchaser.purchaser_id %></td>
+            <td><%= purchaser.purchaser_name %></td>
+            <td><%= purchaser.position %></td>
+            <td>
+                <a href="/purchasers/<%= purchaser.purchaser_id %>" class="btn btn-detail">詳細</a>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+
+    <div class="back-area">
+        <a href="/" class="back-button">一覧へ戻る</a>
+    </div>
+</div>
+</body>
+</html>
